@@ -131,7 +131,6 @@
 }
 
 .tiptap {
-
   /* Image styles */
   img {
     display: block;
@@ -154,7 +153,7 @@
   ul li {
     list-style-type: disc;
 
-    >p {
+    > p {
       margin-top: 0.25em;
       margin-bottom: 0.25em;
     }
@@ -170,7 +169,7 @@
   }
 
   /* Task list styles */
-  ul[data-type='taskList'] {
+  ul[data-type="taskList"] {
     list-style: none;
     margin-left: 0;
     padding: 0;
@@ -179,22 +178,22 @@
       align-items: flex-start;
       display: flex;
 
-      >label {
+      > label {
         flex: 0 0 auto;
         margin-right: 0.5rem;
         user-select: none;
       }
 
-      >div {
+      > div {
         flex: 1 1 auto;
       }
     }
 
-    input[type='checkbox'] {
+    input[type="checkbox"] {
       cursor: pointer;
     }
 
-    ul[data-type='taskList'] {
+    ul[data-type="taskList"] {
       margin: 0;
     }
   }
@@ -252,20 +251,20 @@
       position: relative;
       vertical-align: top;
 
-      >* {
+      > * {
         margin-bottom: 0;
       }
     }
 
     th {
-      background-color: #C7C7C7;
+      background-color: #c7c7c7;
       font-weight: bold;
       text-align: left;
     }
 
     .selectedCell:after {
       background: #959596;
-      content: '';
+      content: "";
       left: 0;
       right: 0;
       top: 0;
