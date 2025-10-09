@@ -6,9 +6,13 @@ import { TableKit } from '@tiptap/extension-table'
 import StarterKit from '@tiptap/starter-kit'
 import { ResizableImage } from 'tiptap-extension-resizable-image'
 import 'tiptap-extension-resizable-image/styles.css';
+import { useEditorStore } from '@/store/use-editor-store'
 
 export default function Editor() {
+    const { setEditor } = useEditorStore();
+
     const editor = useEditor({
+        onCreate: ({ editor }) => setEditor(editor),
         editorProps: {
             attributes: {
                 style: "padding-left: 56px; padding-right: 56px;",
@@ -22,7 +26,7 @@ export default function Editor() {
             ResizableImage.configure({
                 defaultWidth: 200,
                 defaultHeight: 200,
-                
+
             }),
             TaskItem.configure({
                 nested: true,

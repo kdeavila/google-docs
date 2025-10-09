@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
-
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <Button variant="outline">Click me</Button>
+      <h1 className="text-3xl font-bold">Google Docs Clone 📒</h1>
     </div>
   );
 }
