@@ -3,6 +3,7 @@
 import { TaskItem, TaskList } from "@tiptap/extension-list";
 import { TableKit } from "@tiptap/extension-table";
 import { EditorContent, useEditor } from "@tiptap/react";
+import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
 import StarterKit from "@tiptap/starter-kit";
 import { ResizableImage } from "tiptap-extension-resizable-image";
 import "tiptap-extension-resizable-image/styles.css";
@@ -31,6 +32,8 @@ export default function Editor() {
       StarterKit,
       TaskList,
       TableKit,
+      TextStyle,
+      FontFamily,
       ResizableImage.configure({
         defaultWidth: 200,
         defaultHeight: 200,

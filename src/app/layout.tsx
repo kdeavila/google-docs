@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Google Docs Clone",
   description:
     "This is a Google Docs Clone built with Next.js, React and Tailwind CSS",
+  icons: {
+    icon: "/favicon.webp",
+  },
 };
 
 export default function RootLayout({
