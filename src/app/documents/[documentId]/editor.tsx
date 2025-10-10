@@ -2,6 +2,8 @@
 
 import { TaskItem, TaskList } from "@tiptap/extension-list";
 import { TableKit } from "@tiptap/extension-table";
+import { Color } from "@tiptap/extension-color";
+import { Highlight } from "@tiptap/extension-highlight";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
 import StarterKit from "@tiptap/starter-kit";
@@ -30,6 +32,10 @@ export default function Editor() {
     },
     extensions: [
       StarterKit,
+      Color,
+      Highlight.configure({
+        multicolor: true,
+      }),
       TaskList,
       TableKit,
       TextStyle,
