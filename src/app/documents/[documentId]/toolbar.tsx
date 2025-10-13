@@ -23,6 +23,8 @@ import TextColorButton from "./components/text-color-button";
 import TextHighlight from "./components/text-highlight-button";
 import LinkButton from "./components/link-button.";
 import ImageButton from "./components/image-button";
+import AlignButton from "./components/align-button";
+import ListButton from "./components/list-button";
 
 export default function Toolbar() {
   const { editor } = useEditorStore();
@@ -148,6 +150,8 @@ export default function Toolbar() {
 
       <LinkButton />
       <ImageButton />
+      <AlignButton />
+      <ListButton />
 
       {sections[2].map((item) => (
         <ToolbarButton key={item.label} {...item} />
