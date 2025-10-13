@@ -6,6 +6,8 @@ import { Color } from "@tiptap/extension-color";
 import { Highlight } from "@tiptap/extension-highlight";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
+import { Link } from "@tiptap/extension-link"
+import Image from "@tiptap/extension-image";
 import StarterKit from "@tiptap/starter-kit";
 import { ResizableImage } from "tiptap-extension-resizable-image";
 import "tiptap-extension-resizable-image/styles.css";
@@ -33,6 +35,11 @@ export default function Editor() {
     extensions: [
       StarterKit,
       Color,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: "https"
+      }),
       Highlight.configure({
         multicolor: true,
       }),
@@ -40,6 +47,10 @@ export default function Editor() {
       TableKit,
       TextStyle,
       FontFamily,
+      Image.configure({
+        inline: true,
+        allowBase64: true,
+      }),
       ResizableImage.configure({
         defaultWidth: 200,
         defaultHeight: 200,
