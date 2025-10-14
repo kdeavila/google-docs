@@ -7,12 +7,15 @@ import { Highlight } from "@tiptap/extension-highlight";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
 import { TextAlign } from "@tiptap/extension-text-align";
-import { Link } from "@tiptap/extension-link"
+import { Link } from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import StarterKit from "@tiptap/starter-kit";
 import { ResizableImage } from "tiptap-extension-resizable-image";
 import "tiptap-extension-resizable-image/styles.css";
+
+
 import { useEditorStore } from "@/store/use-editor-store";
+import { FontSizeExtension } from "@/extensions/font-size";
 
 export default function Editor() {
   const { setEditor } = useEditorStore();
@@ -35,6 +38,7 @@ export default function Editor() {
     },
     extensions: [
       StarterKit,
+      FontSizeExtension,
       Color,
       TextAlign.configure({
         types: ["paragraph", "heading"],
@@ -42,7 +46,7 @@ export default function Editor() {
       Link.configure({
         openOnClick: false,
         autolink: true,
-        defaultProtocol: "https"
+        defaultProtocol: "https",
       }),
       Highlight.configure({
         multicolor: true,
