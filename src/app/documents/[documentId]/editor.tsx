@@ -16,6 +16,7 @@ import "tiptap-extension-resizable-image/styles.css";
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
+import { LineHeightExtension } from "@/extensions/line-height";
 
 export default function Editor() {
   const { setEditor } = useEditorStore();
@@ -39,6 +40,10 @@ export default function Editor() {
     extensions: [
       StarterKit,
       FontSizeExtension,
+      LineHeightExtension.configure({
+        types: ["paragraph", "heading"],
+        defaultLineHeight: "normal",
+      }),
       Color,
       TextAlign.configure({
         types: ["paragraph", "heading"],
@@ -71,21 +76,10 @@ export default function Editor() {
         <h1>
             <strong>Hello, this a heading and below there is a table</strong>
         </h1>
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>
-      `,
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+        </p>
+        `,
     immediatelyRender: false,
   });
 

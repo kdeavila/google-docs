@@ -26,6 +26,7 @@ import ImageButton from "./components/image-button";
 import AlignButton from "./components/align-button";
 import ListButton from "./components/list-button";
 import FontSizeButton from "./components/font-size-button";
+import LineHeightButton from "./components/line-height";
 
 export default function Toolbar() {
   const { editor } = useEditorStore();
@@ -159,6 +160,7 @@ export default function Toolbar() {
       <LinkButton />
       <ImageButton />
       <AlignButton />
+      <LineHeightButton />
       <ListButton />
 
       {sections[2].map((item) => (
