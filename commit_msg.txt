@@ -1,0 +1,5 @@
+feat: Add drag indicator to ruler markers and refactor constants
+
+- Add vertical blue line on marker drag for better UX
+- Refactor ruler constants (PAGE_WIDTH, MINIMUM_SPACE) and fix className typo
+- Apply code formatting with Biome
