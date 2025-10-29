@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Marker from "./marker";
+import Marker from "./components/marker";
 const markers = Array.from({ length: 83 }, (_, i) => i);
 
 export default function Ruler() {
