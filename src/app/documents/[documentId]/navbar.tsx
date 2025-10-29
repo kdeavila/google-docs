@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { DocumentInput } from "./components/document-input"
+import Link from "next/link";
+import { DocumentInput } from "./components/document-input";
 import {
   Menubar,
   MenubarContent,
@@ -13,10 +13,26 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
   MenubarShortcut,
-} from "@/components/ui/menubar"
-import { BoldIcon, FileIcon, FileJsonIcon, FilePenIcon, FilePlusIcon, FileTextIcon, GlobeIcon, ItalicIcon, PrinterIcon, RedoIcon, RemoveFormattingIcon, StrikethroughIcon, TextIcon, TrashIcon, UnderlineIcon, Undo2Icon } from "lucide-react"
-import { BsFilePdf } from "react-icons/bs"
-
+} from "@/components/ui/menubar";
+import {
+  BoldIcon,
+  FileIcon,
+  FileJsonIcon,
+  FilePenIcon,
+  FilePlusIcon,
+  FileTextIcon,
+  GlobeIcon,
+  ItalicIcon,
+  PrinterIcon,
+  RedoIcon,
+  RemoveFormattingIcon,
+  StrikethroughIcon,
+  TextIcon,
+  TrashIcon,
+  UnderlineIcon,
+  Undo2Icon,
+} from "lucide-react";
+import { BsFilePdf } from "react-icons/bs";
 
 export const Navbar = () => {
   return (
@@ -82,7 +98,11 @@ export const Navbar = () => {
                   </MenubarItem>
                   <MenubarSeparator />
 
-                  <MenubarItem onClick={() => { window.print() }}>
+                  <MenubarItem
+                    onClick={() => {
+                      window.print();
+                    }}
+                  >
                     <PrinterIcon className="size-4 mr-2" />
                     Print <MenubarShortcut>Crtl + P</MenubarShortcut>
                   </MenubarItem>
@@ -117,18 +137,10 @@ export const Navbar = () => {
                     <MenubarSubTrigger>Table</MenubarSubTrigger>
 
                     <MenubarSubContent>
-                      <MenubarItem>
-                        1 x 1
-                      </MenubarItem>
-                      <MenubarItem>
-                        2 x 2
-                      </MenubarItem>
-                      <MenubarItem>
-                        3 x 3
-                      </MenubarItem>
-                      <MenubarItem>
-                        4 x 4
-                      </MenubarItem>
+                      <MenubarItem>1 x 1</MenubarItem>
+                      <MenubarItem>2 x 2</MenubarItem>
+                      <MenubarItem>3 x 3</MenubarItem>
+                      <MenubarItem>4 x 4</MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
                 </MenubarContent>
@@ -164,7 +176,8 @@ export const Navbar = () => {
 
                       <MenubarItem>
                         <StrikethroughIcon className="size-4 mr-2" />
-                        Strikethrough <MenubarShortcut>Ctrl + Shift + S</MenubarShortcut>
+                        Strikethrough{" "}
+                        <MenubarShortcut>Ctrl + Shift + S</MenubarShortcut>
                       </MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
@@ -175,10 +188,10 @@ export const Navbar = () => {
                   </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
-            </ Menubar>
+            </Menubar>
           </div>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
