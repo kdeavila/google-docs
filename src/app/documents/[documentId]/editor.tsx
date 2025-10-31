@@ -72,14 +72,6 @@ export default function Editor() {
         nested: true,
       }),
     ],
-    content: `
-        <h1>
-            <strong>Hello, this a heading and below there is a table</strong>
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-        </p>
-        `,
     immediatelyRender: false,
   });
 
