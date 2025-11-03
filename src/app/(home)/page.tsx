@@ -1,4 +1,5 @@
 import Navbar from "./navbar";
+import { TemplatesGallery } from "./templates-gallery";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       </div>
 
       <div className="mt-16 ">
-        <h1 className="text-3xl font-bold">Google Docs Clone 📒</h1>
+        <TemplatesGallery />
       </div>
     </div>
   );
