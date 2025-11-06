@@ -2,7 +2,7 @@ import { LoaderIcon } from "lucide-react";
 
 interface FullscreenLoaderProps {
   label?: string;
-};
+}
 
 export default function FullScreenLoader({ label }: FullscreenLoaderProps) {
   return (
