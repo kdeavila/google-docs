@@ -66,9 +66,8 @@ export default function DocumentsTable({
           onClick={() => loadMore(5)}
           disabled={status !== "CanLoadMore"}
         >
-          {status === "CanLoadMore" ? "Load more": "End of results"}
+          {status === "CanLoadMore" ? "Load more" : "End of results"}
         </Button>
-
       </div>
     </div>
   );

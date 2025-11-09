@@ -65,7 +65,8 @@ export default function RenameDialog({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Document name"
-              onClick={(e) => e.stopPropagation()} />
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </form>
 
@@ -77,15 +78,20 @@ export default function RenameDialog({
             onClick={(e) => {
               e.stopPropagation();
               setOpen(false);
-            }}>Cancel</Button>
+            }}
+          >
+            Cancel
+          </Button>
 
           <Button
             type="submit"
             disabled={isUpdating}
-            onClick={(e) => e.stopPropagation()}>
-            Save</Button>
+            onClick={(e) => e.stopPropagation()}
+          >
+            Save
+          </Button>
         </DialogFooter>
       </DialogContent>
-    </Dialog >
+    </Dialog>
   );
 }

@@ -18,7 +18,8 @@ export default function DocumentRow({ document }: DocumentRowProps) {
   return (
     <TableRow
       onClick={() => router.push(`/documents/${document._id}`)}
-      className="cursor-pointer">
+      className="cursor-pointer"
+    >
       <TableCell className="w-[50px]">
         <SiGoogledocs className="size-6 fill-blue-500" />
       </TableCell>
