@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export const TemplatesGallery = () => {
   const router = useRouter();
@@ -24,11 +25,11 @@ export const TemplatesGallery = () => {
     setIsCreating(true);
     create({ title, initialContent })
       .then((documentId) => {
+        toast.success("Document created")
         router.push(`/documents/${documentId}`);
       })
-      .finally(() => {
-        setIsCreating(false);
-      });
+      .catch(() => toast.error("Something went wrong"))
+      .finally(() => setIsCreating(false));
   };
 
   return (
@@ -41,7 +42,7 @@ export const TemplatesGallery = () => {
             {templates.map(({ id, label, imageUrl }) => (
               <CarouselItem
                 key={id}
-                className="basis-1/2 sm:basis-1/4 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-[14.285714%] pl-4"
+                className="basis-1/2 sm:basis-1/4 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4"
               >
                 <div
                   className={cn(

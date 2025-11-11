@@ -55,8 +55,14 @@ export function DocumentMenu({
           </DropdownMenuItem>
         </RemoveDialog>
 
-        <DropdownMenuItem onClick={() => onNewTab(documentId)}>
-          <ExternalLinkIcon className="size-4" />
+        <DropdownMenuItem
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onNewTab(documentId);
+          }}
+        >
+          <ExternalLinkIcon className="size-4 mr-2" />
           Open in a new tab
         </DropdownMenuItem>
       </DropdownMenuContent>

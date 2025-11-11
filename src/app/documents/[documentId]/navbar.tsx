@@ -39,6 +39,7 @@ import {
 } from "lucide-react";
 import { BsFilePdf } from "react-icons/bs";
 import { useEditorStore } from "@/store/use-editor-store";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
@@ -86,10 +87,10 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between ">
+    <nav className="flex items-center justify-between px-4">
       <div className="flex gap-2 items-center">
         <Link href="/">
-          <span className="font-sans text-xl font-semibold">kdeavila</span>
+          <span className="font-sans text-lg font-semibold">Docs</span>
         </Link>
 
         <div className="flex flex-col">
@@ -97,7 +98,7 @@ export const Navbar = () => {
           <div className="flex">
             <Menubar className="border-none bg-transparent shadow-none h-auto p-0">
               <MenubarMenu>
-                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] hover:bg-muted h-auto">
+                <MenubarTrigger className="text-sm font-normal py-[1px] px-[7px] hover:bg-muted h-auto">
                   File
                 </MenubarTrigger>
 
@@ -160,7 +161,7 @@ export const Navbar = () => {
               </MenubarMenu>
 
               <MenubarMenu>
-                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] hover:bg-muted h-auto">
+                <MenubarTrigger className="text-sm font-normal py-[1px] px-[7px] hover:bg-muted h-auto">
                   Edit
                 </MenubarTrigger>
 
@@ -182,7 +183,7 @@ export const Navbar = () => {
               </MenubarMenu>
 
               <MenubarMenu>
-                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] hover:bg-muted h-auto">
+                <MenubarTrigger className="text-sm font-normal py-[1px] px-[7px] hover:bg-muted h-auto">
                   Insert
                 </MenubarTrigger>
 
@@ -221,7 +222,7 @@ export const Navbar = () => {
               </MenubarMenu>
 
               <MenubarMenu>
-                <MenubarTrigger className="text-sm font-normal py-0.5 px-[7px] hover:bg-muted h-auto">
+                <MenubarTrigger className="text-sm font-normal py-[1px] px-[7px] hover:bg-muted h-auto">
                   Format
                 </MenubarTrigger>
 
@@ -290,6 +291,16 @@ export const Navbar = () => {
             </Menubar>
           </div>
         </div>
+      </div>
+
+      <div className="flex gap-3 items-center pl-6">
+        <OrganizationSwitcher
+          afterCreateOrganizationUrl="/"
+          afterLeaveOrganizationUrl="/"
+          afterSelectOrganizationUrl="/"
+          afterSelectPersonalUrl="/"
+        />
+        <UserButton />
       </div>
     </nav>
   );

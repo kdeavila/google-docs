@@ -1,6 +1,7 @@
 import { useMutation } from "convex/react";
 import { ReactNode, useState } from "react";
 
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogDescription,
@@ -52,7 +53,10 @@ export default function RemoveDialog({
             onClick={(e) => {
               e.stopPropagation();
               setIsRemoving(true);
-              remove({ id: documentId }).finally(() => setIsRemoving(false));
+              remove({ id: documentId })
+                .then(() => toast.success("Document removed"))
+                .catch(() => toast.error("Something went wrong"))
+                .finally(() => setIsRemoving(false));
             }}
           >
             Delete

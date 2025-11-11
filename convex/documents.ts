@@ -12,9 +12,14 @@ export const create = mutation({
 
     if (!user) throw new ConvexError("Unauthorized");
 
+    const organizationId = (user.organization_id ?? undefined) as
+      | string
+      | undefined;
+
     return await ctx.db.insert("documents", {
       title: args.title ?? "Untitled Document",
       ownerId: user.subject,
+      organizationId,
       initialContent: args.initialContent,
     });
   },
@@ -29,13 +34,36 @@ export const get = query({
     const user = await ctx.auth.getUserIdentity();
     if (!user) throw new ConvexError("Unauthorized");
 
-    if (search)
+    const organizationId = (user.organization_id ?? undefined) as
+      | string
+      | undefined;
+
+    if (search && organizationId) {
+      return await ctx.db
+        .query("documents")
+        .withSearchIndex("search_title", (q) => {
+          return q.search("title", search).eq("organizationId", organizationId);
+        })
+        .paginate(paginationOpts);
+    }
+
+    if (search) {
       return await ctx.db
         .query("documents")
         .withSearchIndex("search_title", (q) => {
           return q.search("title", search).eq("ownerId", user.subject);
         })
         .paginate(paginationOpts);
+    }
+
+    if (organizationId) {
+      return await ctx.db
+        .query("documents")
+        .withIndex("by_organization_id", (q) =>
+          q.eq("organizationId", organizationId),
+        )
+        .paginate(paginationOpts);
+    }
 
     return await ctx.db
       .query("documents")
@@ -50,11 +78,18 @@ export const removeById = mutation({
     const user = await ctx.auth.getUserIdentity();
     if (!user) throw new ConvexError("Unauthorized");
 
+    const organizationId = (user.organization_id ?? undefined) as
+      | string
+      | undefined;
+
     const document = await ctx.db.get(args.id);
     if (!document) throw new ConvexError("Document not found");
 
     const isOwner = document.ownerId === user.subject;
-    if (!isOwner) throw new ConvexError("Unauthorized");
+    const isOrganizationMember = document.organizationId === organizationId;
+
+    if (!isOwner && !isOrganizationMember)
+      throw new ConvexError("Unauthorized");
 
     return await ctx.db.delete(args.id);
   },
@@ -66,11 +101,18 @@ export const updateById = mutation({
     const user = await ctx.auth.getUserIdentity();
     if (!user) throw new ConvexError("Unauthorized");
 
+    const organizationId = (user.organization_id ?? undefined) as
+      | string
+      | undefined;
+
     const document = await ctx.db.get(args.id);
     if (!document) throw new ConvexError("Document not found");
 
     const isOwner = document.ownerId == user.subject;
-    if (!isOwner) throw new ConvexError("Unauthorized");
+    const isOrganizationMember = document.organizationId === organizationId;
+
+    if (!isOwner && !isOrganizationMember)
+      throw new ConvexError("Unauthorized");
 
     return await ctx.db.patch(args.id, { title: args.title });
   },

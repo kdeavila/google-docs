@@ -39,3 +39,41 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDEs and editors
+.idea/
+.vscode/
+.history/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+Icon?
+
+# caches
+.cache
+.npm
+.turbo
+.eslintcache
+
+# builds
+/dist
+/tmp
+/temp
+
+# testing tools
+/.playwright
+/playwright-report
+/test-results
+/cypress/videos
+/cypress/screenshots
+/.nyc_output
+
+# hosting
+.netlify
