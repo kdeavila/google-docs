@@ -1,25 +1,33 @@
 "use client";
 
-import { TaskItem, TaskList } from "@tiptap/extension-list";
-import { TableKit } from "@tiptap/extension-table";
-import { Color } from "@tiptap/extension-color";
-import { Highlight } from "@tiptap/extension-highlight";
-import { EditorContent, useEditor } from "@tiptap/react";
-import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
-import { TextAlign } from "@tiptap/extension-text-align";
-import { Link } from "@tiptap/extension-link";
-import Image from "@tiptap/extension-image";
-import StarterKit from "@tiptap/starter-kit";
-import { ResizableImage } from "tiptap-extension-resizable-image";
 import "tiptap-extension-resizable-image/styles.css";
+
+import Ruler from "./ruler";
+import Image from "@tiptap/extension-image";
+
+import StarterKit from "@tiptap/starter-kit";
+import { Link } from "@tiptap/extension-link";
+import { Color } from "@tiptap/extension-color";
+import { TableKit } from "@tiptap/extension-table";
+import { Highlight } from "@tiptap/extension-highlight";
+import { TextAlign } from "@tiptap/extension-text-align";
+import { EditorContent, useEditor } from "@tiptap/react";
+import { TaskItem, TaskList } from "@tiptap/extension-list";
+import { ResizableImage } from "tiptap-extension-resizable-image";
+import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
+import {
+  useLiveblocksExtension,
+  FloatingToolbar,
+} from "@liveblocks/react-tiptap";
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
-import Ruler from "./ruler";
+import { Threads } from "./components/threads";
 
 export default function Editor() {
   const { setEditor } = useEditorStore();
+  const liveblocks = useLiveblocksExtension();
 
   const editor = useEditor({
     onCreate: ({ editor }) => setEditor(editor),
@@ -38,7 +46,10 @@ export default function Editor() {
       },
     },
     extensions: [
-      StarterKit,
+      liveblocks,
+      StarterKit.configure({
+        undoRedo: false,
+      }),
       FontSizeExtension,
       LineHeightExtension.configure({
         types: ["paragraph", "heading"],
@@ -68,6 +79,7 @@ export default function Editor() {
         defaultWidth: 200,
         defaultHeight: 200,
       }),
+
       TaskItem.configure({
         nested: true,
       }),
@@ -80,6 +92,8 @@ export default function Editor() {
       <Ruler />
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent editor={editor} />
+        <Threads editor={editor} />
+        <FloatingToolbar editor={editor} />
       </div>
     </div>
   );

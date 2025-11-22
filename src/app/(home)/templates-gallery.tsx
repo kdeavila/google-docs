@@ -25,7 +25,7 @@ export const TemplatesGallery = () => {
     setIsCreating(true);
     create({ title, initialContent })
       .then((documentId) => {
-        toast.success("Document created")
+        toast.success("Document created");
         router.push(`/documents/${documentId}`);
       })
       .catch(() => toast.error("Something went wrong"))
