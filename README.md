@@ -13,6 +13,7 @@ Clon de Google Docs construido con tecnologías modernas de desarrollo web, prop
 
 **Backend**
 - Convex 1.28.2 (Base de datos en tiempo real y backend serverless)  
+- Liveblocks Node 3.10.1 (Colaboración y presencia en tiempo real)
 
 **Autenticación**
 - Clerk 6.34.2 (Gestión de usuarios y JWT)  
@@ -30,27 +31,25 @@ El proyecto sigue una arquitectura de tres capas.
 - **Componentes React** en `src/components/` reutilizables  
 - **Páginas**: Home (`/`) y Editor (`/documents/[documentId]`)  
 
-### Backend (Convex)
+### Backend (Convex + Liveblocks)
 - **Funciones serverless** en `convex/` con type-safety  
 - **Base de datos** con indexación automática y búsqueda  
-- **Sincronización en tiempo real** automática  
+- **Sincronización y colaboración en tiempo real** con Liveblocks Node
+- **API de autorización** para acceso seguro a websockets y documentos
 
 ### Autenticación (Clerk)
 - **ClerkProvider** proporciona contexto de autenticación  
 - **Middleware** protege rutas y valida JWT  
-- **Integración Convex-Clerk** para verificación backend  
-- **Configuración JWT** en Convex  
 
-## ✨ Características Destacadas
+## 🆕 Últimas novedades (26/11/2025)
 
-- ✅ Edición de texto enriquecido en tiempo real  
-- ✅ Exportación múltiple (JSON, HTML, PDF, Text)  
-- ✅ Soporte para tablas, imágenes y listas de tareas  
-- ✅ Autenticación segura con Clerk  
-- ✅ Interfaz similar a Google Docs  
-- ✅ Atajos de teclado (Ctrl+B, Ctrl+I, Ctrl+Z, etc.)  
-- ✅ Búsqueda y paginación de documentos  
-- ✅ Diseño responsive y optimizado para impresión  
+- Integración de Liveblocks Node en el backend para colaboración y presencia en tiempo real.
+- Refactor de RoomProvider para usar authEndpoint y mejorar la seguridad.
+- Mejoras en la verificación de miembros de organización y lógica de acceso a documentos.
+- Ajustes visuales en la galería de plantillas.
+- Nueva página de error global para manejo de fallos.
+
+---
 
 ## 🌐 Variables de Entorno
 
@@ -103,4 +102,3 @@ npm run dev
 
 [LinkedIn](https://www.linkedin.com/in/kdeavila9/)
 Última actualización: 11-17-2025
----

@@ -37,7 +37,7 @@ export default function AlignButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="text-sm h-7 flex items-center justify-center hover:bg-neutral-200/80 px-1.5 overflow-hidden">
+        <button className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden">
           <AlignLeftIcon className="size-4" />
         </button>
       </DropdownMenuTrigger>
