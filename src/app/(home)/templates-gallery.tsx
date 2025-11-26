@@ -59,7 +59,7 @@ export const TemplatesGallery = () => {
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                     }}
-                    className="size-full hover:border-blue-500 rounded-sm border hover:bg-blur-50 transition flex flex-col items-center justify-center gap-y-4 bg-white"
+                    className="size-full hover:border-blue-500 border hover:bg-blur-50 transition flex flex-col items-center justify-center gap-y-4 bg-white"
                   />
                   <p className="text-sm font-medium truncate">{label}</p>
                 </div>
