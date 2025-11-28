@@ -14,18 +14,20 @@ import { Separator } from "@/components/ui/separator";
 
 export const Inbox = () => {
   return (
-    <ClientSideSuspense fallback={
-      <>
-        <Button variant="ghost" className="relative" size="icon" disabled>
-          <BellIcon className="size-5" />
-        </Button>
+    <ClientSideSuspense
+      fallback={
+        <>
+          <Button variant="ghost" className="relative" size="icon" disabled>
+            <BellIcon className="size-5" />
+          </Button>
 
-        <Separator
-          orientation="vertical"
-          className="data-[orientation=vertical]:h-6 bg-neutral-300"
-        />
-      </>
-    }>
+          <Separator
+            orientation="vertical"
+            className="data-[orientation=vertical]:h-6 bg-neutral-300"
+          />
+        </>
+      }
+    >
       <InboxMenu />
     </ClientSideSuspense>
   );
@@ -64,7 +66,6 @@ const InboxMenu = () => {
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-
 
       <Separator
         orientation="vertical"

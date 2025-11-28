@@ -58,7 +58,11 @@ const Avatar = ({ src, name }: AvatarProps) => {
         {name}
       </div>
 
-      <img className="size-full object-cover rounded-full" src={src} alt={name} />
+      <img
+        className="size-full object-cover rounded-full"
+        src={src}
+        alt={name}
+      />
     </div>
   );
 };
