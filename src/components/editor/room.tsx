@@ -1,6 +1,6 @@
 "use client";
 
-import FullScreenLoader from "@/components/fullscreen-loader";
+import FullScreenLoader from "@/components/shared/fullscreen-loader";
 
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import {
@@ -11,7 +11,7 @@ import {
 import { toast } from "sonner";
 import { getUsers, getDocuments } from "./actions";
 import { useParams } from "next/navigation";
-import { Id } from "../../../../convex/_generated/dataModel";
+import { Id } from "../../../convex/_generated/dataModel";
 
 type User = { id: string; name: string; avatar: string };
 

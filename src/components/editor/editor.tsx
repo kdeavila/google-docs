@@ -23,7 +23,7 @@ import {
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
-import { Threads } from "./components/threads";
+import { Threads } from "./threads";
 import { useStorage } from "@liveblocks/react/suspense";
 
 export default function Editor() {

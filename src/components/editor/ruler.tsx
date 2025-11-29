@@ -1,5 +1,5 @@
 import { useMutation, useStorage } from "@liveblocks/react";
-import Marker from "./components/marker";
+import Marker from "./marker";
 
 import React, { useRef, useState } from "react";
 

@@ -1,5 +1,4 @@
 import { SiGoogledocs } from "react-icons/si";
-import { DocumentMenu } from "./document-menu";
 
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -7,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Doc } from "../../../convex/_generated/dataModel";
 import { TableRow, TableCell } from "@/components/ui/table";
 import { Building2Icon, CircleUserIcon } from "lucide-react";
+import { DocumentMenu } from "./document-menu";
 
 interface DocumentRowProps {
   document: Doc<"documents">;

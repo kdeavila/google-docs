@@ -1,7 +1,7 @@
-import Editor from "./editor";
-import { Navbar } from "./navbar";
-import { Room } from "./room";
-import Toolbar from "./toolbar";
+import Editor from "@/components/editor/editor";
+import { Navbar } from "@/components/editor/navbar";
+import { Room } from "@/components/editor/room";
+import Toolbar from "@/components/editor/toolbar";
 
 interface DocumentIdPageProps {
   params: Promise<{ documentId: string }>;

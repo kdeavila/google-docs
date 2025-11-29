@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { DocumentInput } from "./components/document-input";
+import { DocumentInput } from "./document-input";
 import {
   Menubar,
   MenubarContent,

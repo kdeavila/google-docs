@@ -9,8 +9,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import DocumentRow from "./document-row";
 import { Button } from "@/components/ui/button";
+
+import DocumentRow from "./document-row";
 
 interface DocumentsTableProps {
   documents: Doc<"documents">[] | undefined;

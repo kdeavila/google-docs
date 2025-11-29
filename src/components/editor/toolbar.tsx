@@ -16,17 +16,17 @@ import {
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useEditorStore } from "@/store/use-editor-store";
-import ToolbarButton from "./components/toolbar-button";
-import FontFamilyButton from "./components/font-family-button";
-import HeadingLevelButton from "./components/heading-level-button";
-import TextColorButton from "./components/text-color-button";
-import TextHighlight from "./components/text-highlight-button";
-import LinkButton from "./components/link-button.";
-import ImageButton from "./components/image-button";
-import AlignButton from "./components/align-button";
-import ListButton from "./components/list-button";
-import FontSizeButton from "./components/font-size-button";
-import LineHeightButton from "./components/line-height";
+import ToolbarButton from "./toolbar/toolbar-button";
+import FontFamilyButton from "./toolbar/font-family-button";
+import HeadingLevelButton from "./toolbar/heading-level-button";
+import TextColorButton from "./toolbar/text-color-button";
+import TextHighlight from "./toolbar/text-highlight-button";
+import LinkButton from "./toolbar/link-button";
+import ImageButton from "./toolbar/image-button";
+import AlignButton from "./toolbar/align-button";
+import ListButton from "./toolbar/list-button";
+import FontSizeButton from "./toolbar/font-size-button";
+import LineHeightButton from "./toolbar/line-height-button";
 
 export default function Toolbar() {
   const { editor } = useEditorStore();
