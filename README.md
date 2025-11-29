@@ -1,6 +1,6 @@
 # README - Google Docs Clone
 
-Clon de Google Docs construido con tecnologías modernas de desarrollo web, proporcionando edición de documentos en tiempo real.
+Clon de Google Docs construido con tecnologías modernas de desarrollo web, proporcionando edición de documentos en tiempo real con funcionalidades de colaboración.
 
 ## 🚀 Stack Tecnológico
 
@@ -13,41 +13,66 @@ Clon de Google Docs construido con tecnologías modernas de desarrollo web, prop
 
 **Backend**
 - Convex 1.28.2 (Base de datos en tiempo real y backend serverless)  
-- Liveblocks Node 3.10.1 (Colaboración y presencia en tiempo real)
+- Liveblocks 3.10.1 (Colaboración en tiempo real)
 
 **Autenticación**
 - Clerk 6.34.2 (Gestión de usuarios y JWT)  
 
 **UI & Estado**
-- Radix UI (Componentes accesibles)  
-- Zustand 5.0.8 (Gestión de estado)  
+- Shadcn/ui (Componentes accesibles)  
+- Zustand 5.0.8 (Gestión de estado global)  
+- Liveblocks React (Estado colaborativo)
 
 ## 🏗️ Arquitectura
 
-El proyecto sigue una arquitectura de tres capas.
+El proyecto sigue una arquitectura basada en características (feature-based) con una clara separación de responsabilidades.
 
-### Frontend (Next.js)
-- **App Router** en `src/app/` para enrutamiento basado en archivos  
-- **Componentes React** en `src/components/` reutilizables  
-- **Páginas**: Home (`/`) y Editor (`/documents/[documentId]`)  
+### Estructura del Proyecto
 
-### Backend (Convex + Liveblocks)
-- **Funciones serverless** en `convex/` con type-safety  
-- **Base de datos** con indexación automática y búsqueda  
-- **Sincronización y colaboración en tiempo real** con Liveblocks Node
-- **API de autorización** para acceso seguro a websockets y documentos
+```
+src/
+├── app/                     # Rutas de Next.js
+│   ├── (home)/             # Página principal
+│   ├── documents/          # Rutas de documentos
+│   └── api/                # Endpoints de API
+├── components/
+│   ├── editor/             # Componentes del editor de documentos
+│   │   ├── toolbar/        # Componentes de la barra de herramientas
+│   │   └── ...             # Otros componentes del editor
+│   ├── home/               # Componentes de la página de inicio
+│   ├── shared/             # Componentes compartidos
+│   └── ui/                 # Componentes de UI reutilizables (shadcn/ui)
+├── providers/              # Proveedores de contexto
+├── store/                  # Estado global con Zustand
+├── hooks/                  # Hooks personalizados
+└── lib/                    # Utilidades y configuraciones
+```
 
-### Autenticación (Clerk)
-- **ClerkProvider** proporciona contexto de autenticación  
-- **Middleware** protege rutas y valida JWT  
+### Características Principales
 
-## 🆕 Últimas novedades (26/11/2025)
+1. **Autenticación y Autorización**
+   - Autenticación segura con Clerk
+   - Control de acceso a documentos
+   - Gestión de sesiones
 
-- Integración de Liveblocks Node en el backend para colaboración y presencia en tiempo real.
-- Refactor de RoomProvider para usar authEndpoint y mejorar la seguridad.
-- Mejoras en la verificación de miembros de organización y lógica de acceso a documentos.
-- Ajustes visuales en la galería de plantillas.
-- Nueva página de error global para manejo de fallos.
+2. **Editor de Documentos**
+   - Edición en tiempo real con Tiptap
+   - Formato de texto avanzado
+   - Colaboración en tiempo real con múltiples usuarios
+   - Historial de cambios
+
+3. **Gestión de Documentos**
+   - Creación, edición y eliminación de documentos
+   - Búsqueda y filtrado
+   - Plantillas predefinidas
+
+## 🆕 Últimas actualizaciones (29/11/2025)
+
+- **Refactorización completa** de la estructura del proyecto a un enfoque basado en características
+- **Mejora en la organización** de componentes por dominio funcional
+- **Optimización de imports** y rutas con alias (@/)
+- **Mejora en la mantenibilidad** del código con una estructura más clara
+- **Actualización de dependencias** a sus últimas versiones estables
 
 ---
 
@@ -77,28 +102,103 @@ npm install
 npm run dev
 ```
 
-## 📁 Estructura principal (resumen)
+## 📁 Estructura detallada
 
-- src/
-  - app/                - App Router, layouts y rutas
-  - components/         - Componentes React reutilizables
-  - styles/             - Estilos globales y configuración Tailwind
-- convex/
-  - schema.ts           - Definición de tablas y índices
-  - functions/          - Funciones serverless y reglas de acceso
-- public/               - Activos estáticos
-- package.json          - Dependencias y scripts
+```
+.
+├── src/
+│   ├── app/                    # Rutas de la aplicación
+│   │   ├── (home)/            # Página principal con listado de documentos
+│   │   ├── documents/         # Rutas relacionadas con documentos
+│   │   └── api/               # Endpoints de API
+│   │
+│   ├── components/
+│   │   ├── editor/            # Componentes del editor de documentos
+│   │   │   ├── toolbar/       # Barra de herramientas del editor
+│   │   │   ├── navbar.tsx     # Barra de navegación del editor
+│   │   │   └── ...
+│   │   │
+│   │   ├── home/              # Componentes de la página de inicio
+│   │   │   ├── documents-table.tsx  # Tabla de documentos
+│   │   │   └── ...
+│   │   │
+│   │   ├── shared/            # Componentes compartidos
+│   │   └── ui/                # Componentes UI reutilizables (shadcn/ui)
+│   │
+│   ├── providers/             # Proveedores de contexto (Convex, Liveblocks, etc.)
+│   ├── store/                 # Estado global con Zustand
+│   ├── hooks/                 # Hooks personalizados
+│   └── lib/                   # Utilidades y configuraciones
+│
+├── convex/                   # Backend con Convex
+│   ├── schema.ts             # Definición del esquema de la base de datos
+│   └── documents.ts          # Funciones relacionadas con documentos
+│
+├── public/                   # Archivos estáticos
+└── package.json              # Dependencias y scripts
+```
 
-## 🛠️ Notas de implementación
+### � Dependencias principales
 
-- El proveedor Convex se inicializa usando la variable `NEXT_PUBLIC_CONVEX_URL`  
-- Clerk se configura con `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` y se usa middleware para proteger rutas  
-- La base de datos Convex incluye índices y un search index para búsquedas rápidas dentro de documentos  
-- El editor principal se implementa con Tiptap y se sincroniza en tiempo real vía Convex
+- **Next.js**: Framework React para renderizado híbrido
+- **Convex**: Backend como servicio con base de datos en tiempo real
+- **Liveblocks**: Para colaboración en tiempo real
+- **Clerk**: Autenticación y gestión de usuarios
+- **Tiptap**: Editor de texto enriquecido
+- **Shadcn/ui**: Componentes UI accesibles y personalizables
+- **Zustand**: Gestión de estado global
+- **Tailwind CSS**: Utilidades CSS para estilos rápidos
+
+## 🛠️ Guía de desarrollo
+
+### Configuración inicial
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/kdeavila/google-docs.git
+   cd google-docs
+   ```
+
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Configura las variables de entorno (ver sección correspondiente)
+
+4. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+
+### Estructura de componentes
+
+- **Componentes del Editor**: Ubicados en `src/components/editor/`
+  - `editor.tsx`: Componente principal del editor
+  - `toolbar/`: Componentes de la barra de herramientas
+  - `navbar.tsx`: Barra de navegación superior
+  - `ruler.tsx`: Regla para márgenes del documento
+
+- **Componentes de la Página de Inicio**: En `src/components/home/`
+  - `documents-table.tsx`: Tabla de documentos
+  - `templates-gallery.tsx`: Galería de plantillas
+
+- **Componentes Compartidos**: En `src/components/shared/`
+  - `fullscreen-loader.tsx`: Cargador a pantalla completa
+
+### Convenciones de código
+
+- Usar TypeScript estricto
+- Seguir la estructura de carpetas por características
+- Mantener los componentes pequeños y enfocados en una sola responsabilidad
+- Usar nombres descriptivos para variables y funciones
+- Documentar componentes y funciones complejas
 
 ## 👨‍💻 Autor
 
 **Keyner de Ávila Gutiérrez**
 
 [LinkedIn](https://www.linkedin.com/in/kdeavila9/)
-Última actualización: 11-17-2025
+[GitHub](https://github.com/kdeavila)
+
+Última actualización: 29/11/2025
