@@ -18,17 +18,28 @@ import { FontFamily, TextStyle } from "@tiptap/extension-text-style";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { ResizableImage } from "tiptap-extension-resizable-image";
+import {
+  LEFT_MARGIN_DEFAULT,
+  PAGE_WIDTH,
+  RIGHT_MARGIN_DEFAULT,
+} from "@/constants/margins";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
 import { useEditorStore } from "@/store/use-editor-store";
 import Ruler from "./ruler";
 import { Threads } from "./threads";
 
-export default function Editor() {
+interface EditorProps {
+  initialContent?: string | undefined;
+}
+
+export default function Editor({ initialContent }: EditorProps) {
   const leftMargin = useStorage((root) => root.leftMargin);
   const rightMargin = useStorage((root) => root.rightMargin);
 
-  const liveblocks = useLiveblocksExtension();
+  const liveblocks = useLiveblocksExtension({
+    initialContent,
+  });
 
   const { setEditor } = useEditorStore();
 
@@ -43,9 +54,8 @@ export default function Editor() {
     onContentError: ({ editor }) => setEditor(editor),
     editorProps: {
       attributes: {
-        style: `padding-left: ${leftMargin ?? 56}px; padding-right: ${rightMargin ?? 56}px;`,
-        class:
-          "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] py-10 pr-14 cursor-text",
+        style: `padding-left: ${leftMargin ?? LEFT_MARGIN_DEFAULT}px; padding-right: ${rightMargin ?? RIGHT_MARGIN_DEFAULT}px;`,
+        class: `focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[${PAGE_WIDTH}px] py-10 pr-14 cursor-text`,
       },
     },
     extensions: [
@@ -93,7 +103,9 @@ export default function Editor() {
   return (
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:px-0 print:bg-white print:overflow-visible">
       <Ruler />
-      <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
+      <div
+        className={`min-w-max flex justify-center w-[${PAGE_WIDTH}px] py-4 print:py-0 mx-auto print:w-full print:min-w-0`}
+      >
         <EditorContent editor={editor} />
         <Threads editor={editor} />
         <FloatingToolbar editor={editor} />

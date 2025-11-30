@@ -31,8 +31,14 @@ export const DocumentInput = ({ title, id }: DocumentInputProps) => {
 
     setIsPending(true);
     mutate({ id, title: newValue })
-      .then(() => toast.success("Document updated"))
-      .catch(() => toast.error("Something went wrong"))
+      .then(() => {
+        toast.success("Document updated");
+        setIsError(false);
+      })
+      .catch(() => {
+        toast.error("Something went wrong");
+        setIsError(true);
+      })
       .finally(() => setIsPending(false));
   });
 
@@ -50,8 +56,12 @@ export const DocumentInput = ({ title, id }: DocumentInputProps) => {
       .then(() => {
         toast.success("Document updated");
         setIsEditing(false);
+        setIsError(false);
       })
-      .catch(() => toast.error("Something went wrong"))
+      .catch(() => {
+        toast.error("Something went wrong");
+        setIsError(true);
+      })
       .finally(() => setIsPending(false));
   };
 
