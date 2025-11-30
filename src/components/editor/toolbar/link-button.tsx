@@ -27,7 +27,10 @@ export default function LinkButton() {
       }}
     >
       <DropdownMenuTrigger asChild>
-        <button className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden">
+        <button
+          type="button"
+          className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden"
+        >
           <Link2Icon className="size-4" />
         </button>
       </DropdownMenuTrigger>

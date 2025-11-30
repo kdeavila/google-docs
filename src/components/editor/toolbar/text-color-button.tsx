@@ -19,7 +19,10 @@ export default function TextColorButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="h-7 min-w-7 shrink-0 flex flex-col items-center justify-center hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm">
+        <button
+          type="button"
+          className="h-7 min-w-7 shrink-0 flex flex-col items-center justify-center hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

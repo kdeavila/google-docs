@@ -61,6 +61,7 @@ export default function FontSizeButton() {
   return (
     <div className="flex items-center gap-x-0.5">
       <button
+        type="button"
         onClick={decrement}
         className="text-sm size-7 flex items-center justify-center hover:bg-neutral-200/80"
       >
@@ -78,6 +79,7 @@ export default function FontSizeButton() {
         />
       ) : (
         <button
+          type="button"
           onClick={() => {
             setIsEditing(true);
             setFontSize(fontSize);
@@ -90,6 +92,7 @@ export default function FontSizeButton() {
       )}
 
       <button
+        type="button"
         onClick={increment}
         className="text-sm size-7 flex items-center justify-center hover:bg-neutral-200/80"
       >
