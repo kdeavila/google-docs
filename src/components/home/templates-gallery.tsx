@@ -1,5 +1,9 @@
 "use client";
 
+import { useMutation } from "convex/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 import {
   Carousel,
   CarouselContent,
@@ -7,14 +11,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
-
 import { templates } from "@/constants/templates";
-import { useRouter } from "next/navigation";
-import { useMutation } from "convex/react";
+import { cn } from "@/lib/utils";
 import { api } from "../../../convex/_generated/api";
-import { useState } from "react";
-import { toast } from "sonner";
 
 export const TemplatesGallery = () => {
   const router = useRouter();

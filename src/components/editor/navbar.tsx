@@ -1,19 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { DocumentInput } from "./document-input";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-  MenubarShortcut,
-} from "@/components/ui/menubar";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import {
   BoldIcon,
   FileIcon,
@@ -37,10 +24,23 @@ import {
   UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
+import Link from "next/link";
 import { BsFilePdf } from "react-icons/bs";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 import { useEditorStore } from "@/store/use-editor-store";
-import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Avatars } from "./avatars";
+import { DocumentInput } from "./document-input";
 import { Inbox } from "./inbox";
 
 export const Navbar = () => {

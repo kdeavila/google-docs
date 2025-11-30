@@ -1,3 +1,4 @@
+import { ListIcon, ListOrderedIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,7 +6,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
-import { ListIcon, ListOrderedIcon } from "lucide-react";
 
 export default function ListButton() {
   const { editor } = useEditorStore();
@@ -28,7 +28,10 @@ export default function ListButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden">
+        <button
+          type="button"
+          className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden"
+        >
           <ListIcon className="size-4" />
         </button>
       </DropdownMenuTrigger>
@@ -36,6 +39,7 @@ export default function ListButton() {
       <DropdownMenuContent className="p-1 flex min-w-max">
         {lists.map(({ label, icon: Icon, onClick, isActive }) => (
           <button
+            type="button"
             key={label}
             onClick={onClick}
             className={cn(

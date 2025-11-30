@@ -1,18 +1,18 @@
-import RemoveDialog from "./remove-dialog";
-import { Button } from "@/components/ui/button";
-import { Id } from "../../../convex/_generated/dataModel";
 import {
   ExternalLinkIcon,
   FilePenIcon,
   MoreVertical,
   TrashIcon,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { Id } from "../../../convex/_generated/dataModel";
+import RemoveDialog from "./remove-dialog";
 import RenameDialog from "./rename-dialog";
 
 interface DocumentMenuProps {

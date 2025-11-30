@@ -1,17 +1,16 @@
 "use client";
 
-import FullScreenLoader from "@/components/shared/fullscreen-loader";
-
-import { ReactNode, useEffect, useMemo, useState } from "react";
 import {
+  ClientSideSuspense,
   LiveblocksProvider,
   RoomProvider,
-  ClientSideSuspense,
 } from "@liveblocks/react/suspense";
-import { toast } from "sonner";
-import { getUsers, getDocuments } from "./actions";
 import { useParams } from "next/navigation";
-import { Id } from "../../../convex/_generated/dataModel";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
+import FullScreenLoader from "@/components/shared/fullscreen-loader";
+import type { Id } from "../../../convex/_generated/dataModel";
+import { getDocuments, getUsers } from "./actions";
 
 type User = { id: string; name: string; avatar: string };
 
@@ -25,7 +24,7 @@ export function Room({ children }: { children: ReactNode }) {
       try {
         const list = await getUsers();
         setUsers(list);
-      } catch (error) {
+      } catch (_error) {
         toast.error("Failed to fetch users");
       }
     },

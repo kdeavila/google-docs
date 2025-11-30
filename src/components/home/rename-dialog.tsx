@@ -1,5 +1,7 @@
-import React, { FormEvent, ReactNode, useState } from "react";
-import { Id } from "../../../convex/_generated/dataModel";
+import { useMutation } from "convex/react";
+import React, { type FormEvent, type ReactNode, useState } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,10 +12,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
-import { toast } from "sonner";
+import type { Id } from "../../../convex/_generated/dataModel";
 
 interface RenameDialogProps {
   documentId: Id<"documents">;

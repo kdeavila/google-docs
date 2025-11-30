@@ -1,6 +1,7 @@
-import { useEditorStore } from "@/store/use-editor-store";
 import { MinusIcon, PlusIcon } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { useEditorStore } from "@/store/use-editor-store";
 
 export default function FontSizeButton() {
   const { editor } = useEditorStore();

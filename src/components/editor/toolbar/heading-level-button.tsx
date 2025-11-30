@@ -1,12 +1,12 @@
-import { cn } from "@/lib/utils";
-import { useEditorStore } from "@/store/use-editor-store";
-import { ChevronDownIcon } from "lucide-react";
 import type { Level } from "@tiptap/extension-heading";
+import { ChevronDownIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { useEditorStore } from "@/store/use-editor-store";
 
 export default function HeadingLevelButton() {
   const { editor } = useEditorStore();
@@ -41,6 +41,7 @@ export default function HeadingLevelButton() {
         {headings.map(({ label, value, fontSize }) => {
           return (
             <button
+              type="button"
               key={label}
               style={{ fontSize }}
               onClick={() => {

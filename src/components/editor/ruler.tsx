@@ -1,7 +1,7 @@
 import { useMutation, useStorage } from "@liveblocks/react";
+import type React from "react";
+import { useRef, useState } from "react";
 import Marker from "./marker";
-
-import React, { useRef, useState } from "react";
 
 const markers = Array.from({ length: 83 }, (_, i) => i);
 

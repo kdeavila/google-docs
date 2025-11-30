@@ -1,12 +1,11 @@
 "use client";
 
-import Navbar from "@/components/home/navbar";
-import DocumentsTable from "@/components/home/documents-table";
-
 import { usePaginatedQuery } from "convex/react";
-import { api } from "../../../convex/_generated/api";
-import { useSearchParam } from "@/hooks/use-search-param";
+import DocumentsTable from "@/components/home/documents-table";
+import Navbar from "@/components/home/navbar";
 import { TemplatesGallery } from "@/components/home/templates-gallery";
+import { useSearchParam } from "@/hooks/use-search-param";
+import { api } from "../../../convex/_generated/api";
 
 export default function Home() {
   const [search] = useSearchParam();

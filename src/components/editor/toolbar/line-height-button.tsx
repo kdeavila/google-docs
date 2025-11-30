@@ -1,3 +1,4 @@
+import { ListCollapseIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,7 +6,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
-import { ListCollapseIcon } from "lucide-react";
 
 export default function LineHeightButton() {
   const { editor } = useEditorStore();

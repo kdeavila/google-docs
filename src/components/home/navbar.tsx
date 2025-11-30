@@ -1,7 +1,6 @@
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import SearchInput from "./search-input";
-
-import { UserButton, OrganizationSwitcher } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (

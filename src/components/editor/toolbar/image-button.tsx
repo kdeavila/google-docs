@@ -1,3 +1,5 @@
+import { ImageIcon, SearchIcon, UploadIcon } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,8 +16,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useEditorStore } from "@/store/use-editor-store";
-import { ImageIcon, SearchIcon, UploadIcon } from "lucide-react";
-import { useState } from "react";
 
 export default function ImageButton() {
   const { editor } = useEditorStore();

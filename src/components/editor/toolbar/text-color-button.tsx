@@ -1,11 +1,11 @@
-import { useEditorStore } from "@/store/use-editor-store";
+import type { ColorResult } from "react-color";
+import { SketchPicker, TwitterPicker } from "react-color";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { ColorResult } from "react-color";
-import { SketchPicker, TwitterPicker } from "react-color";
+import { useEditorStore } from "@/store/use-editor-store";
 
 export default function TextColorButton() {
   const { editor } = useEditorStore();

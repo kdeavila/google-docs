@@ -1,6 +1,6 @@
+import { paginationOptsValidator } from "convex/server";
 import { ConvexError, v } from "convex/values";
 import { mutation, query } from "./_generated/server";
-import { paginationOptsValidator } from "convex/server";
 
 export const getByIds = query({
   args: { ids: v.array(v.id("documents")) },
@@ -129,7 +129,7 @@ export const updateById = mutation({
     const document = await ctx.db.get(args.id);
     if (!document) throw new ConvexError("Document not found");
 
-    const isOwner = document.ownerId == user.subject;
+    const isOwner = document.ownerId === user.subject;
     const isOrganizationMember = !!(
       document.organizationId && document.organizationId === organizationId
     );

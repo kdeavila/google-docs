@@ -1,21 +1,21 @@
 import { useMutation } from "convex/react";
-import { ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 
 import { toast } from "sonner";
 import {
   AlertDialog,
-  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogFooter,
   AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 import { api } from "../../../convex/_generated/api";
-import { Id } from "../../../convex/_generated/dataModel";
+import type { Id } from "../../../convex/_generated/dataModel";
 
 interface RemoveDialogProps {
   documentId: Id<"documents">;

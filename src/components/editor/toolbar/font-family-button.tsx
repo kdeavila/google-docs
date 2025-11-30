@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,7 +6,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
-import { ChevronDownIcon } from "lucide-react";
 
 export default function FontFamilyButton() {
   const { editor } = useEditorStore();
@@ -23,7 +23,10 @@ export default function FontFamilyButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="h-7 w-[120px] shrink-0 flex items-center justify-between hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm">
+        <button
+          type="button"
+          className="h-7 w-[120px] shrink-0 flex items-center justify-between hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm"
+        >
           <span className="truncate">
             {editor?.getAttributes("textStyle").fontFamily || "Arial"}
           </span>
@@ -34,6 +37,7 @@ export default function FontFamilyButton() {
       <DropdownMenuContent className="p-1 flex flex-col gap-y-1">
         {font.map(({ label, value }) => (
           <button
+            type="button"
             key={label}
             onClick={() => editor?.chain().focus().setFontFamily(value).run()}
             className={cn(

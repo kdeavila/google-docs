@@ -2,29 +2,27 @@
 
 import "tiptap-extension-resizable-image/styles.css";
 
-import Ruler from "./ruler";
-import Image from "@tiptap/extension-image";
-
-import StarterKit from "@tiptap/starter-kit";
-import { Link } from "@tiptap/extension-link";
-import { Color } from "@tiptap/extension-color";
-import { TableKit } from "@tiptap/extension-table";
-import { Highlight } from "@tiptap/extension-highlight";
-import { TextAlign } from "@tiptap/extension-text-align";
-import { EditorContent, useEditor } from "@tiptap/react";
-import { TaskItem, TaskList } from "@tiptap/extension-list";
-import { ResizableImage } from "tiptap-extension-resizable-image";
-import { TextStyle, FontFamily } from "@tiptap/extension-text-style";
+import { useStorage } from "@liveblocks/react/suspense";
 import {
-  useLiveblocksExtension,
   FloatingToolbar,
+  useLiveblocksExtension,
 } from "@liveblocks/react-tiptap";
-
-import { useEditorStore } from "@/store/use-editor-store";
+import { Color } from "@tiptap/extension-color";
+import { Highlight } from "@tiptap/extension-highlight";
+import Image from "@tiptap/extension-image";
+import { Link } from "@tiptap/extension-link";
+import { TaskItem, TaskList } from "@tiptap/extension-list";
+import { TableKit } from "@tiptap/extension-table";
+import { TextAlign } from "@tiptap/extension-text-align";
+import { FontFamily, TextStyle } from "@tiptap/extension-text-style";
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import { ResizableImage } from "tiptap-extension-resizable-image";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
+import { useEditorStore } from "@/store/use-editor-store";
+import Ruler from "./ruler";
 import { Threads } from "./threads";
-import { useStorage } from "@liveblocks/react/suspense";
 
 export default function Editor() {
   const leftMargin = useStorage((root) => root.leftMargin);

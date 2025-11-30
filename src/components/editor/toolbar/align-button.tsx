@@ -1,16 +1,16 @@
 import {
+  AlignCenterIcon,
+  AlignJustifyIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+} from "lucide-react";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
-import {
-  AlignCenterIcon,
-  AlignJustifyIcon,
-  AlignLeftIcon,
-  AlignRightIcon,
-} from "lucide-react";
 
 export default function AlignButton() {
   const { editor } = useEditorStore();
@@ -37,7 +37,10 @@ export default function AlignButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden">
+        <button
+          type="button"
+          className="text-sm h-7 flex items-center justify-center shrink-0 hover:bg-neutral-200/80 px-1.5 overflow-hidden"
+        >
           <AlignLeftIcon className="size-4" />
         </button>
       </DropdownMenuTrigger>
@@ -45,6 +48,7 @@ export default function AlignButton() {
       <DropdownMenuContent className="p-1 flex">
         {alignments.map(({ value, icon: Icon }) => (
           <button
+            type="button"
             key={value}
             onClick={() => editor?.chain().focus().setTextAlign(value).run()}
             className={cn(

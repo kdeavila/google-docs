@@ -1,13 +1,13 @@
+import { Link2Icon } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEditorStore } from "@/store/use-editor-store";
-import { Link2Icon } from "lucide-react";
-import { useState } from "react";
 
 export default function LinkButton() {
   const { editor } = useEditorStore();
