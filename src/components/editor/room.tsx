@@ -13,7 +13,21 @@ import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 import type { Id } from "../../../convex/_generated/dataModel";
 import { getDocuments, getUsers } from "./actions";
 
-type User = { id: string; name: string; avatar: string };
+type User = { id: string; name: string; avatar: string; color: string };
+
+function getRandomColor() {
+  const colors = [
+    "#FFD700", // Gold
+    "#FFA07A", // Light Salmon
+    "#20B2AA", // Light Sea Green
+    "#87CEFA", // Light Sky Blue
+    "#9370DB", // Medium Purple
+    "#3CB371", // Medium Sea Green
+    "#FF6347", // Tomato
+    "#4682B4", // Steel Blue
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
 export function Room({ children }: { children: ReactNode }) {
   const params = useParams();
@@ -24,7 +38,7 @@ export function Room({ children }: { children: ReactNode }) {
     () => async () => {
       try {
         const list = await getUsers();
-        setUsers(list);
+        setUsers(list.map((user) => ({ ...user, color: getRandomColor() })));
       } catch (_error) {
         toast.error("Failed to fetch users");
       }
