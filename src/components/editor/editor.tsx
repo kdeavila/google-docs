@@ -39,6 +39,7 @@ export default function Editor({ initialContent }: EditorProps) {
 
   const liveblocks = useLiveblocksExtension({
     initialContent,
+    offlineSupport_experimental: true,
   });
 
   const { setEditor } = useEditorStore();
@@ -93,12 +94,12 @@ export default function Editor({ initialContent }: EditorProps) {
         defaultWidth: 200,
         defaultHeight: 200,
       }),
-
       TaskItem.configure({
         nested: true,
       }),
     ],
     immediatelyRender: false,
+    autofocus: true,
   });
 
   return (
