@@ -54,8 +54,9 @@ export default function Editor({ initialContent }: EditorProps) {
     onContentError: ({ editor }) => setEditor(editor),
     editorProps: {
       attributes: {
-        style: `padding-left: ${leftMargin ?? LEFT_MARGIN_DEFAULT}px; padding-right: ${rightMargin ?? RIGHT_MARGIN_DEFAULT}px;`,
-        class: `focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[${PAGE_WIDTH}px] py-10 pr-14 cursor-text`,
+        style: `padding-left: ${leftMargin ?? LEFT_MARGIN_DEFAULT}px; padding-right: ${rightMargin ?? RIGHT_MARGIN_DEFAULT}px; width: ${PAGE_WIDTH}px;`,
+        class:
+          "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] py-10 pr-14 cursor-text",
       },
     },
     extensions: [
@@ -104,7 +105,8 @@ export default function Editor({ initialContent }: EditorProps) {
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:px-0 print:bg-white print:overflow-visible">
       <Ruler />
       <div
-        className={`min-w-max flex justify-center w-[${PAGE_WIDTH}px] py-4 print:py-0 mx-auto print:w-full print:min-w-0`}
+        style={{ width: `${PAGE_WIDTH}px` }}
+        className="min-w-max flex justify-center py-4 print:py-0 mx-auto print:w-full print:min-w-0"
       >
         <EditorContent editor={editor} />
         <Threads editor={editor} />
